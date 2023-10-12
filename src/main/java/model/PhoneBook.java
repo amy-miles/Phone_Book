@@ -12,7 +12,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="Phone Book")
-public class PhoneBookModel {
+public class PhoneBook {
 	@Id
 	@GeneratedValue
 	private int id;

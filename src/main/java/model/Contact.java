@@ -1,5 +1,6 @@
 package model;
 
+
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -15,7 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="Contacts")
-public class ContactModel {
+public class Contact {
 	@Id
 	@GeneratedValue
 	@Column(name="ID")
@@ -25,17 +26,33 @@ public class ContactModel {
 	@Column(name="PHONE NUMBER")
 	private String pNumber;
 	@Column(name="BIRTHDAY")
-	private LocalDate bDay;
+	private String bDay;
 	
-	public ContactModel() {
+	public Contact() {
 		super();
 	}
 
-	public ContactModel(String name, String pNumber, LocalDate bDay) {
+	public Contact(String name, String pNumber, String bDay) {
 		super();
 		this.name = name;
 		this.pNumber = pNumber;
 		this.bDay = bDay;
+	}
+	
+	
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	/**
@@ -69,21 +86,22 @@ public class ContactModel {
 	/**
 	 * @return the bDay
 	 */
-	public LocalDate getbDay() {
+	public String getbDay() {
 		return bDay;
 	}
 
 	/**
 	 * @param bDay the bDay to set
 	 */
-	public void setbDay(LocalDate bDay) {
+	public void setbDay(String bDay) {
 		this.bDay = bDay;
 	}
 
 	@Override
 	public String toString() {
-		return "ContactModel [name=" + name + ", pNumber=" + pNumber + ", bDay=" + bDay + "]";
+		return "Contact [name=" + name + ", pNumber=" + pNumber + ", bDay=" + bDay + "]";
 	}
+
 	
 	
 	
