@@ -18,7 +18,7 @@ import model.Contact;
  * Oct 10, 2023
  */
 public class ContactHelper {
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("PhoneBook");
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("ContactsList");
 	
 	public void insertContact(Contact c) {
 		EntityManager em = emfactory.createEntityManager();
@@ -30,16 +30,16 @@ public class ContactHelper {
 	
 	public List<Contact> showAllContacts(){
 		EntityManager em = emfactory.createEntityManager();
-		List<Contact> allContacts = em.createQuery("SELECT c FROM Contact c").getResultList();
+		List<Contact> allContacts = em.createQuery("SELECT c FROM Contact c", Contact.class).getResultList();
 		return allContacts;
 	}
 	
 	public void deleteContact(Contact toBeDeleted) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Contact> tq = em.createQuery("SELECT c FROM Contact c WHERE c.Name = :selectedName", Contact.class);
+		TypedQuery<Contact> tq = em.createQuery("SELECT c FROM Contact c WHERE c.cname = :selectedCName", Contact.class);
 	
-		tq.setParameter("selectedFirstName", toBeDeleted.getName());
+		tq.setParameter("selectedCName", toBeDeleted.getCName());
 		tq.setMaxResults(1);
 		
 		Contact outcome = tq.getSingleResult();
@@ -86,7 +86,7 @@ public class ContactHelper {
 	public List<Contact> getListOfMatchingContacts(String name){
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Contact> typedQuery = em.createQuery("select c from Contact c where c.name = :selectedContact", Contact.class );
+		TypedQuery<Contact> typedQuery = em.createQuery("select c from Contact c where c.cname = :selectedContact", Contact.class );
 		typedQuery.setParameter("selectedContact", name);
 		
 		List<Contact> foundContacts = typedQuery.getResultList();
