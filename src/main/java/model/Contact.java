@@ -1,7 +1,7 @@
 package model;
 
 
-import java.time.LocalDate;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,26 +15,26 @@ import javax.persistence.Table;
  * Oct 10, 2023
  */
 @Entity
-@Table(name="Contacts")
+@Table(name="Contact")
 public class Contact {
 	@Id
 	@GeneratedValue
 	@Column(name="ID")
 	private int id;
-	@Column(name="NAME")
-	private String name;
-	@Column(name="PHONE NUMBER")
+	@Column(name="CNAME")
+	private String cName;
+	@Column(name="`PHONE NUMBER`")
 	private String pNumber;
-	@Column(name="BIRTHDAY")
+	@Column(name="`BIRTHDAY`")
 	private String bDay;
 	
 	public Contact() {
 		super();
 	}
 
-	public Contact(String name, String pNumber, String bDay) {
+	public Contact(String cName, String pNumber, String bDay) {
 		super();
-		this.name = name;
+		this.cName = cName;
 		this.pNumber = pNumber;
 		this.bDay = bDay;
 	}
@@ -58,15 +58,15 @@ public class Contact {
 	/**
 	 * @return the name
 	 */
-	public String getName() {
-		return name;
+	public String getCName() {
+		return cName;
 	}
 
 	/**
 	 * @param name the name to set
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setCName(String cName) {
+		this.cName = cName;
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class Contact {
 
 	@Override
 	public String toString() {
-		return "Contact [name=" + name + ", pNumber=" + pNumber + ", bDay=" + bDay + "]";
+		return "Contact [cName=" + cName + ", pNumber=" + pNumber + ", bDay=" + bDay + "]";
 	}
 
 	
