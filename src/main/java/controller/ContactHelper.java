@@ -18,7 +18,7 @@ import model.Contact;
  * Oct 10, 2023
  */
 public class ContactHelper {
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("PhoneBook");
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("Contacts");
 	
 	public void insertContact(Contact c) {
 		EntityManager em = emfactory.createEntityManager();
