@@ -5,6 +5,7 @@
 		<class>model.PhoneBook</class>
 		<class>model.Contact</class>
 		<class>controller.LocalDateAttributeConverter</class>
+		<class>model.PhoneBookDetails</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/phonebook"/>
