@@ -38,9 +38,9 @@ public class NavServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		ContactHelper ch = new ContactHelper();
-		String act= request.getParameter("doThisToItem");
+		String act= request.getParameter("doThisToContact");
 		
-		String path= "/viewAllItemsServlet";
+		String path= "/viewAllContactsServlet";
 		
 		if(act.equals("delete")){
 		 try {
@@ -53,8 +53,8 @@ public class NavServlet extends HttpServlet {
 		}else if(act.equals("edit")) {
 		 try {
 			Integer tempId = Integer.parseInt(request.getParameter("id"));
-			Contact ContactToEdit = ch.searchForContactById(tempId);
-			request.setAttribute("ContactToEdit", ContactToEdit);
+			Contact contactToEdit = ch.searchForContactById(tempId);
+			request.setAttribute("contactToEdit", contactToEdit);
 			path = "/edit-contact.jsp";
 		 }catch (NumberFormatException e) {
 			 System.out.println("Select a contact!!");

@@ -12,7 +12,7 @@ import model.Contact;
 /**
  * Servlet implementation class EditContactServlet
  */
-@WebServlet("/EditContactServlet")
+@WebServlet("/editContactServlet")
 public class EditContactServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -40,14 +40,14 @@ public class EditContactServlet extends HttpServlet {
 		ContactHelper ch = new ContactHelper();
 		
 		String name = request.getParameter("name");
-		String pnum = request.getParameter("pnum");
-		String bday = request.getParameter("bday");
+		String pnum = request.getParameter("pNumber");
+		String bday = request.getParameter("bDay");
 		
 		Integer tempId = Integer.parseInt(request.getParameter("id"));
 		
 		Contact toUpdate = ch.searchForContactById(tempId);
 		
-		toUpdate.setCName(name);
+		toUpdate.setName(name);
 		toUpdate.setpNumber(pnum);
 		toUpdate.setbDay(bday);
 		

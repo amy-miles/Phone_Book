@@ -21,8 +21,8 @@ public class Contact {
 	@GeneratedValue
 	@Column(name="ID")
 	private int id;
-	@Column(name="CNAME")
-	private String cName;
+	@Column(name="NAME")
+	private String name;
 	@Column(name="`PHONE NUMBER`")
 	private String pNumber;
 	@Column(name="`BIRTHDAY`")
@@ -32,14 +32,27 @@ public class Contact {
 		super();
 	}
 
-	public Contact(String cName, String pNumber, String bDay) {
+	public Contact(String name, String pNumber, String bDay) {
 		super();
-		this.cName = cName;
+		this.name = name;
 		this.pNumber = pNumber;
 		this.bDay = bDay;
 	}
 	
-	
+
+	/**
+	 * @param id
+	 * @param name
+	 * @param pNumber
+	 * @param bDay
+	 */
+	public Contact(int id, String name, String pNumber, String bDay) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.pNumber = pNumber;
+		this.bDay = bDay;
+	}
 
 	/**
 	 * @return the id
@@ -58,15 +71,15 @@ public class Contact {
 	/**
 	 * @return the name
 	 */
-	public String getCName() {
-		return cName;
+	public String getName() {
+		return name;
 	}
 
 	/**
 	 * @param name the name to set
 	 */
-	public void setCName(String cName) {
-		this.cName = cName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**
@@ -99,7 +112,7 @@ public class Contact {
 
 	@Override
 	public String toString() {
-		return "Contact [cName=" + cName + ", pNumber=" + pNumber + ", bDay=" + bDay + "]";
+		return "Contact [cName=" + name + ", pNumber=" + pNumber + ", bDay=" + bDay + "]";
 	}
 
 	

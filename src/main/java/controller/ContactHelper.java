@@ -18,7 +18,7 @@ import model.Contact;
  * Oct 10, 2023
  */
 public class ContactHelper {
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("ContactsList");
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("PhoneBook");
 	
 	public void insertContact(Contact c) {
 		EntityManager em = emfactory.createEntityManager();
@@ -37,9 +37,9 @@ public class ContactHelper {
 	public void deleteContact(Contact toBeDeleted) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Contact> tq = em.createQuery("SELECT c FROM Contact c WHERE c.cname = :selectedCName", Contact.class);
+		TypedQuery<Contact> tq = em.createQuery("SELECT c FROM Contact c WHERE c.name = :selectedName", Contact.class);
 	
-		tq.setParameter("selectedCName", toBeDeleted.getCName());
+		tq.setParameter("selectedName", toBeDeleted.getName());
 		tq.setMaxResults(1);
 		
 		Contact outcome = tq.getSingleResult();
@@ -73,6 +73,7 @@ public class ContactHelper {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		Contact found = em.find(Contact.class, idToEdit);
+		em.close();
 		return found;
 	}
 	
@@ -80,6 +81,7 @@ public class ContactHelper {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		Contact found = em.find(Contact.class, name);
+		em.close();
 		return found;
 	}
 

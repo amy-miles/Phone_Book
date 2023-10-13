@@ -8,14 +8,14 @@
 <title>Contacts</title>
 </head>
 <body>
-	<form method="post" action="navigationServlet">
+	<form method="post" action="navServlet">
 		<table>
 		<c:forEach items="${requestScope.allContacts}" var="currentcontact">
 			<tr>
 				<td><input type="radio" name="id" value="${currentcontact.id}"></td>
 				<td>${currentcontact.name}</td>
-				<td>${currentcontact.pnum}</td>
-				<td>${currentcontact.bday}</td>
+				<td>${currentcontact.pNumber}</td>
+				<td>${currentcontact.bDay}</td>
 			</tr>
 			</c:forEach>
 		</table>
