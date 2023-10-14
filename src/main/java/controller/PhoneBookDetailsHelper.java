@@ -35,7 +35,7 @@ public class PhoneBookDetailsHelper {
 	public void deleteList(PhoneBookDetails toDelete) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<PhoneBookDetails> typedQuery = em.createQuery("select detail from PhoneBookDetails where detail.id = :selectedId", PhoneBookDetails.class);
+		TypedQuery<PhoneBookDetails> typedQuery = em.createQuery("select d from PhoneBookDetails d where d.id = :selectedId", PhoneBookDetails.class);
 		//substitute parameter with actual data from the toDelete item
 		typedQuery.setParameter("selectedId", toDelete.getId());
 		//get one result
@@ -54,5 +54,13 @@ public class PhoneBookDetailsHelper {
 		PhoneBookDetails found = em.find(PhoneBookDetails.class, tempId);
 		em.close();
 		return found;
+	}
+	
+	public void updateList(PhoneBookDetails toEdit) {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(toEdit);
+		em.getTransaction().commit();
+		em.close();	
 	}
 }

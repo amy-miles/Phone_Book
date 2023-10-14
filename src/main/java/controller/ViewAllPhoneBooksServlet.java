@@ -32,11 +32,11 @@ public class ViewAllPhoneBooksServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PhoneBookDetailsHelper pbdh = new PhoneBookDetailsHelper();
-		List<PhoneBookDetails> bd = pbdh.getLists();
+		List<PhoneBookDetails> abc = pbdh.getLists();
 		
-		request.setAttribute("allPhoneBooks", bd);
+		request.setAttribute("allPhoneBooks", abc);//like view allLists
 		
-		if(bd.isEmpty()) {
+		if(abc.isEmpty()) {
 			request.setAttribute("allPhoneBooks", " ");
 		}
 		getServletContext().getRequestDispatcher("/contacts-list-by-phonebook.jsp").forward(request, response);

@@ -5,17 +5,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Create a New List</title>
+<title>Create a New Phone List</title>
 </head>
 <body>
 	<form action="createNewPhoneBookServlet" method="post">
-		Phone Book Name: <input type="text" name="phonebookname"><br /> 
-		Available Contacts:<br /> <select name="allContactsToAdd" multiple size="6">
-			<c:forEach items="${requestScope.allItems}" var="currentcontact">
+		Phone Book Name: <input type="text" name="phoneBookName"><br /> 
+		Available Contacts:<br /> <select name="allContactsToAdd" multiple size="6"><!-- allContacts from AddContactsForPhoneBookServlet -->
+			<c:forEach items="${requestScope.allContacts}" var="currentcontact">
 				<option value="${currentcontact.id}">
 					${currentcontact.name}
 					| ${currentcontact.pNumber}
-					| ${currentcontact.bday}</option>
+					| ${currentcontact.bDay}</option>
 			</c:forEach>
 		</select> <br /> <input type="submit" value="Create Phone Book and Add Contacts">
 	</form>

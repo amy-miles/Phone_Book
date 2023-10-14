@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class AddContactsForPhoneBookServlet
+ * gathers all of the contacts in the db to put on the list 
  */
 @WebServlet("/addContactsForPhoneBookServlet")
 public class AddContactsForPhoneBookServlet extends HttpServlet {
@@ -28,7 +29,8 @@ public class AddContactsForPhoneBookServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ContactHelper ch = new ContactHelper();
 				
-				request.setAttribute("allContacts", ch.showAllContacts());
+		request.setAttribute("allContacts", ch.showAllContacts());
+		
 		if (ch.showAllContacts().isEmpty()) {
 			request.setAttribute("allContacts", " ");
 		}

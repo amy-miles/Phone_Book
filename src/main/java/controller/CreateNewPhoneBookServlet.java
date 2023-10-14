@@ -38,11 +38,11 @@ public class CreateNewPhoneBookServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String pbName = request.getParameter("phonebookname");
-		System.out.println("Phone Book Name: " + pbName);
-		
 		ContactHelper ch = new ContactHelper();
+		String phoneBookName = request.getParameter("phoneBookName");
+		System.out.println("Phone Book Name: " + phoneBookName);
+		
+		
 		
 		String[] selectedContacts = request.getParameterValues("allContactsToAdd");
 		List<Contact> selectedContactsInList = new ArrayList<Contact>();
@@ -55,8 +55,8 @@ public class CreateNewPhoneBookServlet extends HttpServlet {
 			}
 		}
 		
-		PhoneBook pb = new PhoneBook(pbName);
-		PhoneBookDetails pbd = new PhoneBookDetails(pbName,pb);
+		PhoneBook phoneBook = new PhoneBook(phoneBookName);
+		PhoneBookDetails pbd = new PhoneBookDetails(phoneBookName,phoneBook);
 		
 		pbd.setListOfContacts(selectedContactsInList);
 		PhoneBookDetailsHelper pbDetHelper = new PhoneBookDetailsHelper();
@@ -64,6 +64,8 @@ public class CreateNewPhoneBookServlet extends HttpServlet {
 		
 		System.out.println("Success!");
 		System.out.println(pbd.toString());
+		
+		getServletContext().getRequestDispatcher("/viewAllPhoneBooksServlet").forward(request, response);
 	}
 
 	/**

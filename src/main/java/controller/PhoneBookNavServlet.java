@@ -37,7 +37,7 @@ public class PhoneBookNavServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PhoneBookDetailsHelper pbdh = new PhoneBookDetailsHelper();
-		String act = request.getParameter("doThisToList");
+		String act = request.getParameter("doThisToPhoneBook");
 		
 		if (act == null) {
 			//no button selected
@@ -72,7 +72,7 @@ public class PhoneBookNavServlet extends HttpServlet {
 				getServletContext().getRequestDispatcher("/viewAllPhoneBooksServlet").forward(request,response);
 			}
 		}else if (act.equals("add")) {
-			getServletContext().getRequestDispatcher("/new-phoneBook.jsp").forward(request,response);
+			getServletContext().getRequestDispatcher("/new-phone-list.jsp").forward(request,response);
 		}
 	}
 

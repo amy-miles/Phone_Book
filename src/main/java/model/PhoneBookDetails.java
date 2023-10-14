@@ -21,10 +21,10 @@ public class PhoneBookDetails {
 	@Id
 	@GeneratedValue
 	private int id;
-	private String phoneBookName;
+	private String bookDetailsName;
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	private PhoneBook phoneBook;
-	@OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
+	@OneToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 	private List<Contact> listOfContacts;
 	
 	/**
@@ -37,26 +37,26 @@ public class PhoneBookDetails {
 
 	/**
 	 * @param id
-	 * @param listName
+	 * @param bookDetailsName
 	 * @param phoneBook
 	 * @param listOfContacts
 	 */
-	public PhoneBookDetails(int id, String phoneBookName, PhoneBook phoneBook, List<Contact> listOfContacts) {
+	public PhoneBookDetails(int id, String bookDetailsName, PhoneBook phoneBook, List<Contact> listOfContacts) {
 		super();
 		this.id = id;
-		this.phoneBookName = phoneBookName;
+		this.bookDetailsName = bookDetailsName;
 		this.phoneBook = phoneBook;
 		this.listOfContacts = listOfContacts;
 	}
 
 	/**
-	 * @param listName
+	 * @param bookDetailsName
 	 * @param phoneBook
 	 * @param listOfContacts
 	 */
-	public PhoneBookDetails(String phoneBookName, PhoneBook phoneBook, List<Contact> listOfContacts) {
+	public PhoneBookDetails(String bookDetailsName, PhoneBook phoneBook, List<Contact> listOfContacts) {
 		super();
-		this.phoneBookName = phoneBookName;
+		this.bookDetailsName = bookDetailsName;
 		this.phoneBook = phoneBook;
 		this.listOfContacts = listOfContacts;
 	}
@@ -65,9 +65,9 @@ public class PhoneBookDetails {
 	 * @param listName
 	 * @param phoneBook
 	 */
-	public PhoneBookDetails(String phoneBookName, PhoneBook phoneBook) {
+	public PhoneBookDetails(String bookDetailsName, PhoneBook phoneBook) {
 		super();
-		this.phoneBookName = phoneBookName;
+		this.bookDetailsName = bookDetailsName;
 		this.phoneBook = phoneBook;
 	}
 
@@ -88,15 +88,15 @@ public class PhoneBookDetails {
 	/**
 	 * @return the listName
 	 */
-	public String getPhoneBookName() {
-		return phoneBookName;
+	public String getBookDetailsName() {
+		return bookDetailsName;
 	}
 
 	/**
 	 * @param listName the listName to set
 	 */
-	public void setListName(String phoneBookName) {
-		this.phoneBookName = phoneBookName;
+	public void setBookDetailsName(String bookDetailsName) {
+		this.bookDetailsName = bookDetailsName;
 	}
 
 	/**
@@ -129,7 +129,7 @@ public class PhoneBookDetails {
 
 	@Override
 	public String toString() {
-		return "PhoneBookDetails [id=" + id + ", phoneBookName=" + phoneBookName + ", phoneBook=" + phoneBook
+		return "PhoneBookDetails [id=" + id + ", bookDetailsName=" + bookDetailsName + ", phoneBook=" + phoneBook
 				+ ", listOfContacts=" + listOfContacts + "]";
 	}
 

@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 import model.PhoneBook;
 
@@ -31,5 +33,23 @@ public class PhoneBookHelper {
 		return allPhoneBooks;
 	}
 	
+	public PhoneBook findPhoneBook(String nameToLookUp) {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		TypedQuery<PhoneBook> typedQuery = em.createQuery("select pb from PhoneBook pb where pb.phoneBookName = :selectedName", PhoneBook.class);
+		typedQuery.setParameter("selectedName", nameToLookUp);
+		typedQuery.setMaxResults(1);
+		
+		PhoneBook foundPhoneBook;
+		try {
+			foundPhoneBook = typedQuery.getSingleResult();
+		}catch(NoResultException ex) {
+			foundPhoneBook = new PhoneBook(nameToLookUp);
+		}
+		em.close();
+		
+		return foundPhoneBook;
+		
+	}
 	
 }
