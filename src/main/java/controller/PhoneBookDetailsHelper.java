@@ -55,4 +55,16 @@ public class PhoneBookDetailsHelper {
 		em.close();
 		return found;
 	}
+	/*
+	 * (Cam Mockobee)
+	 * method for updating phonebook details
+	 */
+	public void updatePhoneBook(PhoneBookDetails toEdit) {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		
+		em.merge(toEdit);
+		em.getTransaction();
+		em.close();
+	}
 }
