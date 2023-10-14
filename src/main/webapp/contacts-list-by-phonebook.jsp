@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,12 +14,9 @@
 		<tr>
 		<td><input type="radio" name="id" value="${currentPhoneBook.id}"></td>
 		<td><h1>${currentPhoneBook.pBListName}</h1></td>
-		</tr>
-		<tr>
-			<td colspan="5"> Created On: ${currentPhoneBook.dateCreated})</td>
-		</tr>
-		<tr>
-			<td colspan="5"> Phonebook: ${currentPhoneBook.phonebook.phoneBookName}</td>
+		</tr>		
+		<tr> 
+			<td colspan="5"> Phone Book: ${currentPhoneBook.phonebook.phoneBookName}</td>
 		</tr>
 		<c:forEach var="pbVal" items="${currentPhoneBook.listOfContacts}">
 		<tr>
@@ -32,7 +30,7 @@
 	<input type="submit" value="delete" name="doThisToPhoneBook">
 	<input type="submit" value="add" name="doThisToPhoneBook">
 	</form>
-	<a href="addContactsForPhoneBookServlet">Create a new phonebook of contacts</a>
+	<a href="addContactsForPhoneBookServlet">Create a new Phone Book of contacts</a>
 	<a href="index.html">Add a new contact</a>
 </body>
 </html>
