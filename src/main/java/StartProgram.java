@@ -2,6 +2,7 @@
 import controller.ContactHelper;
 import model.Contact;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,8 +18,20 @@ public class StartProgram {
 			String name = in.nextLine();
 			System.out.print("Enter the phone number: ");
 			String pNumber = in.nextLine();
-			System.out.print("Enter the birthday: ");
-			String bDay = in.nextLine();			
+			System.out.print("Enter birthday month: ");
+			String month = in.nextLine();
+			System.out.println("Enter the birthday year: ");
+			String year = in.nextLine();
+			System.out.println("Enter the birthday day: ");
+			String day = in.nextLine();
+			LocalDate bDay;
+			
+			try {
+				bDay = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
+			}catch(NumberFormatException ex) {
+				bDay = LocalDate.now();
+			}
+			
 			Contact toAdd = new Contact(name, pNumber, bDay);
 			ch.insertContact(toAdd);
 		}		
@@ -66,8 +79,21 @@ public class StartProgram {
 					toEdit.setpNumber(newNumber);
 				}else if (update == 3) {
 					System.out.print("Updated birthday: ");
-					String newbDay = in.nextLine();					
-					toEdit.setbDay(newbDay);
+					System.out.print("Enter birthday month: ");
+					String month = in.nextLine();
+					System.out.println("Enter the birthday year: ");
+					String year = in.nextLine();
+					System.out.println("Enter the birthday day: ");
+					String day = in.nextLine();
+					LocalDate bDay;
+					
+					try {
+						bDay = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
+					}catch(NumberFormatException ex) {
+						bDay = LocalDate.now();
+					}
+									
+					toEdit.setbDay(bDay);
 				}
 
 				ch.updateContact(toEdit);

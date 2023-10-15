@@ -27,7 +27,7 @@
 		</table>
 	<input type="submit" value="edit" name="doThisToPhoneBook">
 	<input type="submit" value="delete" name="doThisToPhoneBook">
-	<input type="submit" value="add" name="doThisToPhoneBook">
+	
 	</form>
 	<a href="addContactsForPhoneBookServlet">Create a new Phone Book of contacts</a><br/>
 	<a href="index.html">Add a new contact</a>

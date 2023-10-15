@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +21,10 @@ public class PhoneBookDetailsTester {
 		PhoneBookDetailsHelper pbdh = new PhoneBookDetailsHelper();
 
 		// create a couple of contacts
-		Contact john = new Contact("John", "515-512-0004", "May 27");
-		Contact parker = new Contact("Parker", "515-512-0004", "May 27");
+		LocalDate johnBday = LocalDate.of(1967, 05, 27);
+		Contact john = new Contact("John", "515-512-0004", johnBday);
+		LocalDate parkerBday = LocalDate.of(1999, 8, 24);
+		Contact parker = new Contact("Parker", "515-512-8932", parkerBday);
 		
 		// add contacts to a phone list
 		List<Contact> phoneList = new ArrayList<Contact>();

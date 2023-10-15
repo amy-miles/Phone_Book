@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,13 +38,26 @@ public class AddContactServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String name = request.getParameter("name");
-		String pnum = request.getParameter("pnum");
-		String bday = request.getParameter("bday");
-		
-		Contact c = new Contact(name, pnum, bday);
 		ContactHelper ch = new ContactHelper();
+		
+		String name = request.getParameter("name");
+		//format phone number
+		String tempNumber = request.getParameter("pnum");
+		String pnum = ch.formatNumber(tempNumber);		
+		
+		String month = request.getParameter("month");
+		String day = request.getParameter("day");
+		String year = request.getParameter("year");
+		LocalDate ld;
+		
+		try {
+			ld = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
+		}catch(NumberFormatException ex) {
+			ld = LocalDate.now();
+		}
+		
+		Contact c = new Contact(name, pnum, ld);
+		
 		ch.insertContact(c);
 		
 		getServletContext().getRequestDispatcher("/index.html").forward(request, response);

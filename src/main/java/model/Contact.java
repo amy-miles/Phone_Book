@@ -3,6 +3,8 @@ package model;
 
 
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +15,11 @@ import javax.persistence.Table;
  * Cameron Mockobee - cmockobee1@dmacc.edu
  * CIS175 - Fall 2023
  * Oct 10, 2023
+ */
+/**
+ * @author Amy Miles
+ * CIS 175 - Fall 2023
+ * Oct 14, 2023
  */
 @Entity
 @Table(name="Contact")
@@ -26,13 +33,13 @@ public class Contact {
 	@Column(name="`PHONE NUMBER`")
 	private String pNumber;
 	@Column(name="`BIRTHDAY`")
-	private String bDay;
+	private LocalDate bDay;
 	
 	public Contact() {
 		super();
 	}
 
-	public Contact(String name, String pNumber, String bDay) {
+	public Contact(String name, String pNumber, LocalDate bDay) {
 		super();
 		this.name = name;
 		this.pNumber = pNumber;
@@ -46,7 +53,7 @@ public class Contact {
 	 * @param pNumber
 	 * @param bDay
 	 */
-	public Contact(int id, String name, String pNumber, String bDay) {
+	public Contact(int id, String name, String pNumber, LocalDate bDay) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -99,14 +106,14 @@ public class Contact {
 	/**
 	 * @return the bDay
 	 */
-	public String getbDay() {
+	public LocalDate getbDay() {
 		return bDay;
 	}
 
 	/**
 	 * @param bDay the bDay to set
 	 */
-	public void setbDay(String bDay) {
+	public void setbDay(LocalDate bDay) {
 		this.bDay = bDay;
 	}
 
